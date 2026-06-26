@@ -1,204 +1,284 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ucapan & Doa</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP & Ucapan Kehadiran</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Georgia', serif;
-      background: linear-gradient(135deg, #ffeef8
- 0%, #fff5e6
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffeef8
+ 0%, #fff4e6
  100%);
-      padding: 20px;
-      min-height: 100vh;
-    }
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
-      padding: 20px;
-    }
+        /* SECTION 1: FORM */
+        .form-section {
+            max-width: 900px;
+            margin: 0 auto 40px;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
 
-    .header h1 {
-      font-size: 2.5em;
-      color: #d4567d
+        .form-section h1 {
+            text-align: center;
+            color: #d4567a
 ;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    }
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
 
-    .header p {
-      font-size: 1.1em;
-      color: #8b6f47
+        .form-section p {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .form-container {
+            width: 100%;
+            height: 1200px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        /* SECTION 2: WISH BOARD */
+        .wish-section {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .wish-header {<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScJ-TJqnnWVGXYiFAtu-K8NpT2YLw4b9n_u9Hio_ZCEiIyPfg/viewform?embedded=true" width="640" height="894" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .wish-header h2 {
+            color: #d4567a
 ;
-      font-style: italic;
-    }
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
 
-    #wishesContainer {
-      max-width: 800px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+        .wish-header p {
+            color: #888;
+            font-size: 1.1em;
+        }
 
-    .wish-card {
-      background: white;
-      border-radius: 15px;
-      padding: 25px;
-      box-shadow: 0 4px 15px rgba(212, 86, 125, 0.15);
-      border-left: 5px solid #d4567d
+        .wishes-container {
+            display: grid;
+            gap: 20px;
+            max-height: 800px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .wishes-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .wishes-container::-webkit-scrollbar-track {
+            background: #f9f9f9
 ;
-      animation: slideIn 0.5s ease-out;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+            border-radius: 10px;
+        }
 
-    .wish-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(212, 86, 125, 0.25);
-    }
-
-    .wish-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 15px;
-    }
-
-    .wish-icon {
-      font-size: 2em;
-      animation: bounce 2s infinite;
-    }
-
-    .wish-name {
-      font-size: 1.3em;
-      font-weight: bold;
-      color: #d4567d
+        .wishes-container::-webkit-scrollbar-thumb {
+            background: #ffc0d3
 ;
-    }
+            border-radius: 10px;
+        }
 
-    .wish-message {
-      font-size: 1.1em;
-      line-height: 1.6;
-      color: #555;
-      padding-left: 45px;
-    }
-
-    .loading {
-      text-align: center;
-      font-size: 1.2em;
-      color: #d4567d
+        .wish-card {
+            background: linear-gradient(135deg, #fff5f7
+ 0%, #fffbf0
+ 100%);
+            border-left: 4px solid #ffc0d3
 ;
-      padding: 40px;
-      animation: pulse 1.5s infinite;
-    }
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            animation: slideIn 0.5s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateX(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
+        .wish-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
+        .wish-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+            display: block;
+        }
 
-    @media (max-width: 600px) {
-      .header h1 { font-size: 2em; }
-      .wish-card { padding: 20px; }
-      .wish-message { padding-left: 0; }
-    }
-  </style>
+        .wish-name {
+            font-weight: bold;
+            color: #d4567a
+;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+
+        .wish-message {
+            color: #555;
+            line-height: 1.6;
+            font-size: 1.05em;
+        }
+
+        .loading {
+            text-align: center;
+            color: #d4567a
+;
+            font-size: 1.2em;
+            padding: 40px;
+        }
+
+        .no-wishes {
+            text-align: center;
+            color: #999;
+            padding: 40px;
+            font-size: 1.1em;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .form-section h1,
+            .wish-header h2 {
+                font-size: 1.8em;
+            }
+
+            .form-section,
+            .wish-section {
+                padding: 20px;
+            }
+
+            .form-container {
+                height: 1000px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="header">
-    <h1>🌸 Ucapan & Doa 🌸</h1>
-    <p>Terima kasih atas ucapan dan doa yang ikhlas</p>
-  </div>
 
-  <div id="wishesContainer">
-    <div class="loading">Memuatkan ucapan... 🌸</div>
-  </div>
+    <!-- SECTION 1: RSVP FORM -->
+    <div class="form-section">
+        <h1>🌸 RSVP Kehadiran 🌸</h1>
+        <p>Sila isi maklumat kehadiran dan tinggalkan ucapan & doa</p>
+        
+        <iframe 
+            class="form-container"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdxqQxLxQxLxQxLxQxLxQxLxQxLxQxLxQxLxQxLxQxLxQxLxQ/viewform?embedded=true"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0">
+            Loading…
+        </iframe>
+    </div>
 
-  <script>
-    const API_URL = 'https://script.google.com/macros/s/AKfycbwrbNyA2eSThXM7BPAwLyO9drhWtEO909E7Ie1K1IllfTkzV_esX17q1Zl9eapD7UO-Rg/exec';
-    const MAX_WISHES = 8;
-    const REFRESH_INTERVAL = 10000;
-    const GARDEN_ICONS = ['🌸', '🌺', '🌼', '🌻', '🌷', '🌹', '💐', '🌿', '🍃', '🦋'];
+    <!-- SECTION 2: LIVE WISH BOARD -->
+    <div class="wish-section">
+        <div class="wish-header">
+            <h2>💐 Ucapan & Doa 💐</h2>
+            <p>Terima kasih atas ucapan dan doa yang ikhlas</p>
+        </div>
 
-    function getRandomIcon() {
-      return GARDEN_ICONS[Math.floor(Math.random() * GARDEN_ICONS.length)];
-    }
+        <div id="wishesContainer" class="wishes-container">
+            <div class="loading">🌸 Memuatkan ucapan...</div>
+        </div>
+    </div>
 
-    function loadWishes() {
-      const callbackName = 'handleWishes_' + Date.now();
-      
-      window[callbackName] = function(wishes) {
-        const latestWishes = wishes.reverse().slice(0, MAX_WISHES);
-        displayWishes(latestWishes);
-        delete window[callbackName];
-      };
-      
-      const script = document.createElement('script');
-      script.src = API_URL + '?callback=' + callbackName;
-      script.onerror = function() {
-        document.getElementById('wishesContainer').innerHTML = 
-          '<div class="loading">Tidak dapat memuatkan ucapan. Cuba refresh halaman. 🌸</div>';
-      };
-      document.body.appendChild(script);
-    }
+    <script>
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrbNyA2eSThXM7BPAwLyO9drhWtEO909E7Ie1K1IllfTkzV_esX17q1Zl9eapD7UO-Rg/exec';
+        const REFRESH_INTERVAL = 10000; // 10 seconds
 
-    function displayWishes(wishes) {
-      const container = document.getElementById('wishesContainer');
-      
-      if (wishes.length === 0) {
-        container.innerHTML = '<div class="loading">Belum ada ucapan. Jadilah yang pertama! 🌸</div>';
-        return;
-      }
-      
-      container.innerHTML = '';
-      
-      wishes.forEach((wish, index) => {
-        const card = document.createElement('div');
-        card.className = 'wish-card';
-        card.style.animationDelay = (index * 0.1) + 's';
-        card.innerHTML = `
-          <div class="wish-header">
-            <span class="wish-icon">${getRandomIcon()}</span>
-            <div class="wish-name">${escapeHtml(wish.name)}</div>
-          </div>
-          <div class="wish-message">${escapeHtml(wish.message)}</div>
-        `;
-        container.appendChild(card);
-      });
-    }
+        const gardenIcons = ['🌸', '🌺', '🌼', '🌻', '🌷', '🌹', '💐', '🏵️'];
 
-    function escapeHtml(text) {
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
-    }
+        function getRandomIcon() {
+            return gardenIcons[Math.floor(Math.random() * gardenIcons.length)];
+        }
 
-    loadWishes();
-    setInterval(loadWishes, REFRESH_INTERVAL);
-  </script>
+        function displayWishes(wishes) {
+            const container = document.getElementById('wishesContainer');
+            
+            if (!wishes || wishes.length === 0) {
+                container.innerHTML = '<div class="no-wishes">Belum ada ucapan. Jadilah yang pertama! 🌸</div>';
+                return;
+            }
+
+            // Reverse to show latest first
+            const sortedWishes = wishes.reverse();
+            
+            container.innerHTML = sortedWishes.map(wish => `
+                <div class="wish-card">
+                    <span class="wish-icon">${getRandomIcon()}</span>
+                    <div class="wish-name">${wish.name}</div>
+                    <div class="wish-message">${wish.message}</div>
+                </div>
+            `).join('');
+        }
+
+        function loadWishes() {
+            const callbackName = 'jsonpCallback_' + Date.now();
+            
+            window[callbackName] = function(data) {
+                displayWishes(data);
+                delete window[callbackName];
+            };
+
+            const script = document.createElement('script');
+            script.src = `${APPS_SCRIPT_URL}?callback=${callbackName}&_=${Date.now()}`;
+            script.onerror = function() {
+                document.getElementById('wishesContainer').innerHTML = 
+                    '<div class="no-wishes">Tidak dapat memuatkan ucapan. Sila refresh page.</div>';
+                delete window[callbackName];
+            };
+            
+            document.body.appendChild(script);
+            setTimeout(() => {
+                if (document.body.contains(script)) {
+                    document.body.removeChild(script);
+                }
+            }, 5000);
+        }
+
+        // Initial load
+        loadWishes();
+
+        // Auto-refresh every 10 seconds
+        setInterval(loadWishes, REFRESH_INTERVAL);
+    </script>
+
 </body>
 </html>
+
