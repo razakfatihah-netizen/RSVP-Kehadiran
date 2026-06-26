@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP - Maklumat Kehadiran</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffeef8
+ 0%, #fff4e6
+ 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* MODAL CONTAINER */
+        .modal-container {
+            background: white;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            overflow: hidden;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* HEADER */
+        .modal-header {
+            background: linear-gradient(135deg, #f5f5f5
+ 0%, #ffffff
+ 100%);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-title {
+            font-size: 1.3em;
+            color: #333;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: none;
+            font-size: 28px;
+            color: #999;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #f0f0f0
+;
+            color: #333;
+            transform: rotate(90deg);
+        }
+
+        /* CONTENT */
+        .modal-content {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        /* WARNING BOX */
+        .warning-box {
+            background: #ffe6e6
+;
+            border: 2px solid #ffcccc
+;
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin-bottom: 20px;
+        }
+
+        .warning-icon {
+            font-size: 3em;
+            color: #d4567a
+;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .warning-title {
+            font-size: 1.3em;
+            color: #d4567a
+;
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .warning-message {
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .deadline-date {
+            color: #d4567a
+;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        /* INFO TEXT */
+        .info-text {
+            color: #888;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        /* BACK BUTTON */
+        .back-button {
+            background: linear-gradient(135deg, #d4567a
+ 0%, #ff8fab
+ 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 14px 35px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(212, 86, 122, 0.3);
+            font-family: 'Georgia', serif;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 86, 122, 0.5);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .modal-container {
+                margin: 20px;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+            }
+
+            .warning-box {
+                padding: 25px 20px;
+            }
+
+            .warning-title {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="modal-container">
+        <!-- HEADER -->
+        <div class="modal-header">
+            <div class="modal-title">RSVP</div>
+            <button class="close-btn" onclick="window.history.back()">&times;</button>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="modal-content">
+            <div class="warning-box">
+                <span class="warning-icon">⚠️</span>
+                <div class="warning-title">
+                    Maaf, RSVP telah ditutup pada<br>
+                    <span class="deadline-date">Ahad, 20 September 2026</span>
+                </div>
+                <div class="warning-message">
+                    Tempoh untuk mengesahkan kehadiran telah tamat.
+                </div>
+            </div>
+
+            <div class="info-text">
+                Sekiranya anda memerlukan bantuan atau mempunyai sebarang pertanyaan, 
+                sila hubungi kami terus.
+            </div>
+
+            <button class="back-button" onclick="window.history.back()">
+                ← Kembali
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>
