@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP - Redirecting...</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffeef8
+ 0%, #fff4e6
+ 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .loading {
+            text-align: center;
+            color: #d4567a
+;
+            font-size: 1.5em;
+        }
+
+        .loading-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="loading">
+        <div class="loading-icon">🌸</div>
+        <div>Memuatkan...</div>
+    </div>
+
+    <script>
+        // DEADLINE: 20 September 2026, 23:59:59 (Malaysia Time)
+        const DEADLINE = new Date('2026-09-20T23:59:59+08:00');
+        const NOW = new Date();
+
+        // Check if RSVP is still open
+        if (NOW <= DEADLINE) {
+            // RSVP ACTIVE - redirect to form page
+            window.location.href = 'rsvp-active.html';
+        } else {
+            // RSVP CLOSED - redirect to warning page
+            window.location.href = 'rsvp-closed.html';
+        }
+    </script>
+
+</body>
+</html>
